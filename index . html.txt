@@ -1,0 +1,72 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Connect</title>
+<style>
+body{font-family:Arial;background:#eef3ff;margin:0;color:#172554}
+header{background:#1e3a8a;color:white;text-align:center;padding:25px}
+main{max-width:650px;margin:25px auto;padding:15px}
+section{background:white;padding:20px;border-radius:14px;margin-bottom:18px}s
+input,textarea,select{width:100%;padding:10px;margin:7px 0;box-sizing:border-box;border:1px solid #ccd5e8;border-radius:7px}
+button{background:#2563eb;color:white;padding:11px;border:0;border-radius:7px;cursor:pointer}
+.post{background:#f5f7ff;padding:12px;margin-top:12px;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>🎓 Campus Connect</h1>
+<p>GLA University, Mathura</p>
+<p>Ask questions. Help fellow students.</p>
+</header>
+<main>
+<section>
+<h2>Ask a Question</h2>
+<form id="form">
+<input id="name" placeholder="Your first name" required>
+<select id="category">
+<option>Study Help</option>
+<option>Campus Life</option>
+<option>College Information</option>
+<option>Clubs and Events</option>
+</select>
+<input id="title" placeholder="Question title" required>
+<textarea id="details" placeholder="Write your question here" required></textarea>
+<button type="submit">Post Question</button>
+</form>
+</section>
+<section>
+<h2>Student Questions</h2>
+<div id="posts">Be the first to ask a question!</div>
+</section>
+<section>
+<h2>About Campus Connect</h2>
+<p>A student project designed to help college students ask questions, share information, and support one another.</p>
+<p><b>Note:</b> This demo saves questions in the current browser only.</p>
+</section>
+</main>
+<script>
+const form=document.getElementById('form');
+const posts=document.getElementById('posts');
+form.addEventListener('submit',function(e){
+e.preventDefault();
+const name=document.getElementById('name').value;
+const category=document.getElementById('category').value;
+const title=document.getElementById('title').value;
+const details=document.getElementById('details').value;
+const card=document.createElement('div');
+card.className='post';
+const heading=document.createElement('h3');
+heading.textContent=title;
+const info=document.createElement('p');
+info.textContent=category+' · Posted by '+name;
+const question=document.createElement('p');
+question.textContent=details;
+if(posts.textContent==='Be the first to ask a question!')posts.textContent='';
+card.append(heading,info,question);
+posts.prepend(card);
+form.reset();
+});
+</script>
+</body>
